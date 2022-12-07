@@ -9,9 +9,9 @@ int kazandiMi();	//Oyunculardan birinin oyunu kazanıp kazanmadığını kontrol
 
 int sec(int secenek,int oyuncu){
 
-		char tas; // Siyah ve Beyaz taşları ifade eden değişken
+		char tas; // taşları ifade eden değişken
 		
-		tas = (oyuncu == 1) ? 'S':'B'; // 'S' siyah taşları, 'B' beyaz taşları ifade eder
+		tas = (oyuncu == 1) ? '*':'+';
 		
 		// Oyuncu taşı koyacağı yeri seçtikten sonra taşın nereye konulabileceğini kontrol eden koşul
 		
@@ -34,9 +34,9 @@ int sec(int secenek,int oyuncu){
 
 int degis(int al,int yerlestir,int oyuncu){
 	
-		char tas; // Siyah ve Beyaz taşları ifade eden değişken
+		char tas; // taşları ifade eden değişken
 		
-		tas = (oyuncu == 1) ? 'S':'B'; // 'S' siyah taşları, 'B' beyaz taşları ifade eder
+		tas = (oyuncu == 1) ? '*':'+';
 		
 		// Oyuncu yerini değiştirmek istediği taşı seçtikten sonra taşın nereye konulabileceğini kontrol eden koşul
 		
