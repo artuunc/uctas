@@ -5,7 +5,7 @@
 
 char nokta[10] = {'0','1','2','3','4','5','6','7','8','9'}; // 3 taş oyununun alanında bulunan 9 noktayı belirleyen değişken
 void tahta();		// Oyunun oynandığı alanı oluşturan fonksiyon
-int kazandiMi();	//Oyunculardan birinin oyunu kazanıp kazanmadığını kontrol eden fonksiyon
+int kazandiMi();	// Oyunculardan birinin oyunu kazanıp kazanmadığını kontrol eden fonksiyon
 
 int sec(int secenek,int oyuncu){
 
@@ -175,6 +175,8 @@ int degis(int al,int yerlestir,int oyuncu){
 
 int main(){
 	
+	printf("\n\t Uc Tas Oyununa Hosgeldiniz\n\n\n");
+	
 	int sayac=0,al,yerlestir;
 	int oyuncu = 1, i, secenek;
 	char tas; // Siyah ve Beyaz taşları ifade eden değişken
@@ -210,7 +212,6 @@ int main(){
 	// Her iki oyuncu da 3 taşını tahtaya koyduktan sonra herhangi bir oyuncu oyunu kazanana kadar taşların yerlerinin değiştirilmesini sağlayan döngü
 	
 	while(i!=1){
-		tahta();
 		oyuncu = (oyuncu % 2) ? 1:2;
 		printf("Oyuncu %d, hangi tasin yerini degistireceksiniz: ",oyuncu);
 		scanf("%d",&al);
@@ -220,11 +221,13 @@ int main(){
 	
 		i = kazandiMi();
 		oyuncu++;
+		tahta();
 	}
 	
 	// Herhangi bir oyuncunun oyunu kazanıp kazanmadığını kontrol eden koşul
 	
 	if(i==1) {
+			tahta();
 			printf("Oyuncu %d kazandi !\n",--oyuncu);
 			getch();
 			return 0;
@@ -253,7 +256,7 @@ int kazandiMi(){
 
 void tahta(){
 	
-	printf("\n\t Uc Tas Oyununa Hosgeldiniz\n\n\n");
+	printf("\n");
 	printf("\t\t %c_____%c_____%c\n",nokta[1],nokta[2],nokta[3]);
 	printf("\t\t |     |     |\n");
 	printf("\t\t |     |     |\n");
