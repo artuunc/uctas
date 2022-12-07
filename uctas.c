@@ -3,15 +3,18 @@
 #include <conio.h>
 #include <windows.h>
 
-char nokta[10] = {'0','1','2','3','4','5','6','7','8','9'};
-void tahta();
-int kazandiMi();
+char nokta[10] = {'0','1','2','3','4','5','6','7','8','9'}; // 3 taş oyununun alanında bulunan 9 noktayı belirleyen değişken
+void tahta();		// Oyunun oynandığı alanı oluşturan fonksiyon
+int kazandiMi();	//Oyunculardan birinin oyunu kazanıp kazanmadığını kontrol eden fonksiyon
 
 int sec(int secenek,int oyuncu){
 
-		char tas;
+		char tas; // Siyah ve Beyaz taşları ifade eden değişken
 		
-		tas = (oyuncu == 1) ? 'S':'B';
+		tas = (oyuncu == 1) ? 'S':'B'; // 'S' siyah taşları, 'B' beyaz taşları ifade eder
+		
+		// Oyuncu taşı koyacağı yeri seçtikten sonra taşın nereye konulabileceğini kontrol eden koşul
+		
 		if(secenek == 1 && nokta[1] == '1') nokta[1] = tas;
 		else if(secenek == 2 && nokta[2] == '2') nokta[2] = tas;
 		else if(secenek == 3 && nokta[3] == '3') nokta[3] = tas;
@@ -30,8 +33,13 @@ int sec(int secenek,int oyuncu){
 }
 
 int degis(int al,int yerlestir,int oyuncu){
-		char tas;
-		tas = (oyuncu == 1) ? 'S':'B';
+	
+		char tas; // Siyah ve Beyaz taşları ifade eden değişken
+		
+		tas = (oyuncu == 1) ? 'S':'B'; // 'S' siyah taşları, 'B' beyaz taşları ifade eder
+		
+		// Oyuncu yerini değiştirmek istediği taşı seçtikten sonra taşın nereye konulabileceğini kontrol eden koşul
+		
 		if(al == 1 && nokta[1] == tas) {
 			nokta[1] = '1';
 			if(yerlestir == 2 && nokta[2] == '2') nokta[2] = tas;
@@ -155,7 +163,6 @@ int degis(int al,int yerlestir,int oyuncu){
 				degis(al,yerlestir,oyuncu);
 			}
 		}
-		
 		else {
 			printf("Gecersiz secim !\n");
 			printf("Oyuncu %d, hangi tasin yerini degistireceksiniz: ",oyuncu);
@@ -170,12 +177,12 @@ int main(){
 	
 	int sayac=0,al,yerlestir;
 	int oyuncu = 1, i, secenek;
-	char tas;
-	int renk;
+	char tas; // Siyah ve Beyaz taşları ifade eden değişken
 	
+	system("color 4b"); //Konsolun rengini belirleyen komut
 	
-	system("color 4b");
-	
+	// Oyun 3 taş ile oynandığından her iki oyuncu da 3 taşını tahtaya koyana kadar tekrar eden döngü
+
 	while(sayac < 6){
 		
 		tahta();
@@ -188,6 +195,8 @@ int main(){
 		oyuncu++;
 		sayac++;
 		
+		// Herhangi bir oyuncunun oyunu kazanıp kazanmadığını kontrol eden koşul
+		
 		if(i==1) {
 			printf("Oyuncu %d kazandi !",--oyuncu);
 			getch();
@@ -197,6 +206,8 @@ int main(){
 	}
 	
 	tahta();
+	
+	// Her iki oyuncu da 3 taşını tahtaya koyduktan sonra herhangi bir oyuncu oyunu kazanana kadar taşların yerlerinin değiştirilmesini sağlayan döngü
 	
 	while(i!=1){
 		tahta();
@@ -211,15 +222,19 @@ int main(){
 		oyuncu++;
 	}
 	
+	// Herhangi bir oyuncunun oyunu kazanıp kazanmadığını kontrol eden koşul
+	
 	if(i==1) {
 			printf("Oyuncu %d kazandi !\n",--oyuncu);
 			getch();
 			return 0;
 		}
-	
 }
 
 int kazandiMi(){
+	
+	// Oyunun kazanılabilmesi için oyunda yan yana veya üst üste bulunan noktalar üzerindeki taşların aynı olup olmadığını kontrol eden koşul
+	
 	if(nokta[1] == nokta[2] && nokta[2] == nokta[3])
 		return 1;
 	else if(nokta[4] == nokta[5] && nokta[5] == nokta[6])
